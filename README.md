@@ -10,6 +10,9 @@ references.bib에서 한국어 참고문헌에만 keywords={kobib} 을 추가하
 
 제가 작성한 학위논문 내용의 일부를 예시로 넣었으니 작성자의 의도에 맞게 고쳐 쓰시길 바랍니다.
 
+# 글꼴 설치
+컴파일에 필요한 글꼴 함초롬체 LVT와 TexGyre를 Fonts_to_install.7z와 Fonts_to_install.7z.001을 같은 디렉토리에 넣고 압축을 풀어 설치합니다. 모든 글꼴을 컴파일 전에 설치해야 합니다.
+
 # 사용법
 
 1. MikTeX를 설치합니다.
