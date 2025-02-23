@@ -11,7 +11,8 @@ references.bib에서 한국어 참고문헌에만 keywords={kobib} 을 추가하
 제가 작성한 학위논문 내용의 일부를 예시로 넣었으니 작성자의 의도에 맞게 고쳐 쓰시길 바랍니다.
 
 # 글꼴 설치
-컴파일에 필요한 글꼴 함초롬체 LVT와 Tex Gyre를 Fonts_to_install.7z.001과 Fonts_to_install.7z.002를 같은 디렉토리에 넣고 7-zip으로 압축을 풀어 설치합니다. 모든 글꼴을 컴파일 전에 설치해야 합니다.
+Fonts_to_install.7z.001과 Fonts_to_install.7z.002를 같은 디렉토리에 넣고 7-zip으로 압축을 풀어 컴파일에 필요한 글꼴 함초롬체 LVT와 Tex Gyre를 설치합니다. 모든 글꼴을 컴파일 전에 설치해야 합니다.
+2025년 2월 기준으로 한국텍학회 https://www.ktug.org 웹 사이트가 작동하지 않아 링크를 걸지 못 하고 GitHub에 글꼴을 업로드했습니다.
 
 # 사용법
 
