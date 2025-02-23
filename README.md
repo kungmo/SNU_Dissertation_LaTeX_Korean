@@ -8,7 +8,7 @@ references.bib에서 한국어 참고문헌에만 keywords={kobib} 을 추가하
 
 기본적인 템플릿은 https://www.overleaf.com/latex/templates/snu-dissertation-template/fxvtwvxzdpvp 을 사용하였고, 우리말 학위논문에 맞게 세부적인 부분을 모두 고쳤습니다.
 
-제가 작성한 학위논문 내용의 일부를 예시로 넣었으니 작성자의 의도에 맞게 고쳐 쓰시길 바랍니다.
+제가 작성한 학위논문 내용의 일부를 예시로 넣었으니 작성자의 의도에 맞게 고쳐 쓰시길 바랍니다. LaTeX를 이용하여 한국어로 학위 논문 작성 시 이 파일을 얼마든지 변형해서 사용하실 수 있습니다.
 
 # 글꼴 설치
 Fonts_to_install.7z.001과 Fonts_to_install.7z.002를 같은 디렉토리에 넣고 7-zip으로 압축을 풀어 컴파일에 필요한 글꼴 함초롬체 LVT와 Tex Gyre를 설치합니다. 모든 글꼴을 컴파일 전에 설치해야 합니다.
