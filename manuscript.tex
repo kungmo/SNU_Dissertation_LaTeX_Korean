@@ -1,0 +1,581 @@
+%%%%%%%%%%%%%%%%%%%%%%%[Comments]%%%%%%%%%%%%%%%%%%%%%%%
+% Starting from February 2021, SNU students are no longer required to submit a printed dissertation; only a digital version is necessary. Consequently, the library no longer enforces strict rules for page size, margin size, fonts, and font sizes. Their guidance is to "basically follow the template." 
+%
+% Therefore, most parts in this document are free to be changed, especially within the %%%%[Free to change]%%%% block, as long as it doesn't significantly compromise readability.
+%
+% ******* If you want the true bare-bone structure, go to ********
+% https://github.com/taehoonlee/snu-dissertation-template
+%
+% """중앙도서관에서 LaTex 양식은 별도로 제공하고 있지 않으며, word / 한글 양식만 제공하고 있는 점 양해 부탁드립니다. [...] 현재 저희가 제공하고 있는 작성 요령 및 내용 구성 등은 기본적으로 따르되, 많이 문의해주시는 논문의 규격(본문 크기, 여백 등), 서체(활자 종류 및 크기)에 대해서는 엄격하게 규정해두고 있지 않은 점 알려드립니다."""  - email by libit@snu.ac.kr on 2022-12-05 to ysBach.
+%
+% 서울대학교 학위논문 LaTeX 템플릿 (한글 논문) kungmo@snu.ac.kr (2025년 2월)
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass[12pt]{report}
+\usepackage[paperwidth=21cm,paperheight=29.7cm,left=2.5cm,right=2.5cm,top=3.5cm,bottom=1.5cm]{geometry}
+% Originally this was
+%\usepackage[paperwidth=19cm,paperheight=26cm,left=3cm,right=3cm,top=3.5cm,bottom=1.5cm]{geometry}
+
+% 국문 논문으로 바꾸려고 추가함 20240521
+% 한글 출력 관련 설정
+\usepackage[hangul]{kotex}
+\usepackage{kotex-logo}
+\usepackage{indentfirst}
+
+% 표 관련 설정 20240729
+\usepackage{lscape}
+\usepackage{tabularx,booktabs,caption,multirow,array}
+\usepackage{longtable}
+\usepackage[table,xcdraw]{xcolor}
+\usepackage{colortbl}
+
+\addtolength{\voffset}{-1.5cm}
+\renewcommand{\baselinestretch}{2.0} % 기본 줄간격 1.7
+\renewcommand{\abstractname}{\large 국문초록} % Abstract를 '국문초록'으로 20240521
+\usepackage{setspace}
+\usepackage[]{enumitem}
+%\usepackage{lmodern}
+%\usepackage{librecaslon}
+%\usepackage[T1]{fontenc}
+\usepackage{footnote}
+\usepackage{textcomp}
+\usepackage{verbatim} % comment 처리하려고 추가함 20240521
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Reference style settings
+%% ↓ This is also free to change. Do as you wish...
+%\usepackage[
+%  round,
+%  semicolon,
+%  authoryear,
+%%  sort
+%]{natbib}
+
+%%%%%%% BIB %%%%%%%%%%%%%%%%%
+%% KTUG.org의 noname님 감사합니다!! 덕분에 한글 이름과 영어 이름 인용을 자동으로 처리할 수 있게 되었습니다. 20240811
+\usepackage[
+	backend=biber,
+	bibencoding=utf8,
+%	style=apa,
+	natbib=true,
+	citestyle=authoryear,
+	bibstyle=authoryear, 
+	maxcitenames=2,
+	maxbibnames=9,
+	language=auto,
+	autolang=other,
+	uniquelist=false,
+	dashed=false
+]{biblatex}
+\renewcommand\nameyeardelim{, }	%% natbib command. natbib should be true.
+\renewbibmacro{in:}{}
+
+\newcommand*{\myownetal}{et~al.}
+\newcommand*\MYand{and}
+\DefineBibliographyStrings{english}{%
+	andothers={\myownetal}{},
+	and={\MYand}{}
+}
+
+\let\origbibleftparen\bibleftparen
+\newcommand*\MYbibleftparen{\origbibleftparen}
+\renewcommand*\bibopenparen{\MYbibleftparen}
+\renewcommand*\bibcloseparen{\bibrightparen}
+
+\AtEveryCitekey{%
+  \ifkeyword{kobib}{%
+    \renewcommand{\multinamedelim}{·}%
+    \renewcommand{\finalnamedelim}{·}%
+    \renewcommand*{\myownetal}{외}%
+    \renewcommand*\MYand{\unskip\와}%
+    \renewcommand*\MYbibleftparen{\unskip\origbibleftparen}%
+  }{}%
+}
+
+\AtEveryBibitem{%
+  \clearfield{note}%
+  \ifkeyword{kobib}{%
+    \renewcommand{\multinamedelim}{·}%
+    \renewcommand{\finalnamedelim}{·}%
+	\renewcommand*\mkbibquote[1]{〈#1\isdot〉}
+    \DeclareFieldFormat{journaltitle}{『#1』}%
+	\DeclareFieldFormat{title}{『#1』}%
+	\DeclareFieldFormat{translator}{#1 (역)}
+  }{%
+	\renewcommand*\mkbibquote[1]{``#1\isdot''}
+	\ifkeyword{kobibmixed}{
+		\renewcommand{\multinamedelim}{, }%
+		\renewcommand{\finalnamedelim}{, }%
+	    \DeclareFieldFormat{journaltitle}{『#1』}%
+		\DeclareFieldFormat{title}{『#1』}%
+		\DeclareFieldFormat{translator}{#1 (역)}
+	}{}	
+  }
+}%
+
+\addbibresource{references.bib}
+
+%%%%%%%%%%%%%%%%%%%%
+% Page numbering style settings
+% For proper page numbering at TOC part https://tex.stackexchange.com/questions/235866/page-number-resets-on-table-of-contents
+\makeatletter
+\renewenvironment{abstract}{%
+    \if@twocolumn
+    \section*{\abstractname}%
+    \else
+    \small
+    \begin{center}%
+        {\bfseries \abstractname\vspace{-.5em}\vspace{\z@}}%
+    \end{center}%
+    \quotation
+    \fi}
+{\if@twocolumn\else\endquotation\fi}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%
+
+%↓↓↓↓↓↓↓↓↓↓[Free to change, preamble. START]↓↓↓↓↓↓↓↓↓↓
+% It is your choice to change contents from here to the end of preamble.
+\usepackage{amsmath}
+
+% 한글 글꼴 관련 설정
+\usepackage{etoolbox}
+\usepackage{iftex}
+\ifboolexpr{bool{xetex} or bool{luatex}}
+{
+  \usepackage{fontspec}
+  \setmainfont{TeX Gyre Termes}
+  \setsansfont{TeX Gyre Heros}
+  \setmainhangulfont{HANBatang-LVT}[
+    Extension = .ttf,
+    UprightFont = *,
+    BoldFont = {HANBatangB-LVT}]
+  \setsanshangulfont{HANDotum-LVT}[
+    Extension = .ttf,
+    UprightFont = *,
+    BoldFont = {HANDotumB-LVT}]
+  \usepackage{unicode-math}
+  \setmathfont{TeX Gyre Termes Math}
+  \setmathhangulfont{HANBatang-LVT.ttf}
+}%
+{
+  \ifpdftex
+  \usepackage[T1]{fontenc}
+  \usepackage{amssymb}
+  \usepackage{textcomp}
+  \usepackage[notextcomp]{stix2}  % without notextcomp, "Option clash for package textcomp." error pops up...
+  \usepackage{dhucs-nanumfont}
+  \fi
+}
+
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows, positioning, calc, arrows.meta, fit, trees}
+\usepackage{pgfplots} % 그래프 그리는 라이브러리
+
+\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{siunitx}
+\usepackage{physics}
+\usepackage{rotating}  % The package to rotate table by sidewaystable
+\usepackage{csquotes}  % for ``displayquote`` environment
+%\usepackage[notextcomp]{stix}
+% xelatex을 사용하면 stix 패키지를 사용하면 안 됨.
+% 참조 : http://www.ktug.org/xe/index.php?document_srl=263584#comment_263601
+% 참조 : http://www.ktug.org/xe/index.php?document_srl=176602#comment_176635
+% unicode-math.pdf 를 참조하여 다른 unicode math글꼴을 선택할 것.
+% texdoc unicode-math 명령으로 문서를 불러서 볼 수 있음.
+%\usepackage[libertine,cmintegrals,cmbraces,vvarbb]{newtxmath}
+\usepackage[font=small]{caption}
+\usepackage{listings}
+\usepackage{xcolor}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% For URL-ed A&A style bibliography (https://github.com/yangcht/AA-bibstyle-with-hyperlink)
+% IMPORTANT NOTE:
+% As of 2023-05-18, at least PHDTHESIS must have `adsurl={}` and `adsnote={}`, when they are not registered to ADS. If they don't have these fields, """Extra }, or forgotten \endgroup. """ error will appear.
+\usepackage{twoopt}
+%\usepackage[breaklinks]{hyperref}      %% to avoid \citeads line fills, add "draft"
+\usepackage[breaklinks,bookmarks=true]{hyperref}
+                                       %% to avoid the PDFTK error (broken links)
+%\bibpunct{(}{)}{;}{a}{}{,}             %% natbib format for A&A and ApJ
+\definecolor{cobalt}{rgb}{0.06, 0.2, 0.65}
+\hypersetup{
+  colorlinks,
+  citecolor=cobalt,
+  linkcolor=[rgb]{0.2, 0.2, 0.8}, %목차 색깔
+  urlcolor=cobalt,
+}
+\makeatletter
+  \newcommandtwoopt{\citeads}[3][][]{\href{http://adsabs.harvard.edu/abs/#3}%
+    {\def\hyper@linkstart##1##2{}%
+     \let\hyper@linkend\@empty\citealp[#1][#2]{#3}}}
+  \newcommandtwoopt{\citepads}[3][][]{\href{http://adsabs.harvard.edu/abs/#3}%
+    {\def\hyper@linkstart##1##2{}%
+     \let\hyper@linkend\@empty\citep[#1][#2]{#3}}}
+  \newcommandtwoopt{\citetads}[3][][]{\href{http://adsabs.harvard.edu/abs/#3}%
+    {\def\hyper@linkstart##1##2{}%
+     \let\hyper@linkend\@empty\citet[#1][#2]{#3}}}
+  \newcommandtwoopt{\citeyearads}[3][][]%
+    {\href{http://adsabs.harvard.edu/abs/#3}
+    {\def\hyper@linkstart##1##2{}%
+     \let\hyper@linkend\@empty\citeyear[#1][#2]{#3}}}
+\makeatother
+%%%%%%%%%%%%%%%%%%%%
+
+\let\cite\citet
+
+\usepackage{url}
+%\usepackage{hyperref}
+\usepackage{cleveref}
+\usepackage{pdfpages} % pdf 파일을 삽입하기 위한 패키지
+
+%%%%%%%%%%%%%%%%%%%%%
+% 자동정렬 itemmize (https://tex.stackexchange.com/questions/121489/alphabetically-display-the-items-in-itemize)
+
+\usepackage{datatool}% http://ctan.org/pkg/datatool
+\newcommand{\sortitem}[1]{%
+  \DTLnewrow{list}% Create a new entry
+  \DTLnewdbentry{list}{description}{#1}% Add entry as description
+}
+\newenvironment{sortedlist}{%
+  \DTLifdbexists{list}{\DTLcleardb{list}}{\DTLnewdb{list}}% Create new/discard old list
+}{%
+  \DTLsort{description}{list}% Sort list
+  \begin{itemize}%
+    \DTLforeach*{list}{\theDesc=description}{%
+      \item \theDesc}% Print each item
+  \end{itemize}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%
+
+%\crefname{equation}{equation}{equations}%
+%\crefname{chapter}{chapter}{chapters}%
+%\crefname{section}{section}{sections}%
+%\crefname{appendix}{appendix}{appendices}%
+%\crefname{enumi}{item}{items}%
+%\crefname{footnote}{footnote}{footnotes}%
+%\crefname{figure}{figure}{figures}%
+%\crefname{table}{table}{tables}%
+%\crefname{theorem}{theorem}{theorems}%
+%\crefname{lemma}{lemma}{lemmas}%
+%\crefname{corollary}{corollary}{corollaries}%
+%\crefname{proposition}{proposition}{propositions}%
+%\crefname{definition}{definition}{definitions}%
+%\crefname{result}{result}{results}%
+%\crefname{example}{example}{examples}%
+%\crefname{remark}{remark}{remarks}%
+%\crefname{note}{note}{notes}%
+
+\Crefname{equation}{Eq.}{Eqs.}%
+\Crefname{chapter}{Chap.}{Chaps.}%
+\Crefname{section}{\S}{\S}%
+\Crefname{appendix}{App.}{Apps.}%
+\Crefname{enumi}{item}{items}%
+\Crefname{footnote}{각주}{footnotes}%한글로 수정
+\Crefname{figure}{그림.}{Figs.}%한글로 수정
+\Crefname{table}{표.}{Tabs.}%한글로 수정
+%\Crefname{theorem}{Thm.}{Thms.}%
+%\Crefname{lemma}{Lem.}{Lems.}%
+%\Crefname{corollary}{Cor.}{Cors.}%
+%\Crefname{proposition}{proposition}{propositions}%
+\Crefname{definition}{Def.}{Defs}%
+%\Crefname{result}{result}{results}%
+%\Crefname{example}{example}{examples}%
+%\Crefname{remark}{remark}{remarks}%
+%\lCrefname{note}{note}{notes}%
+
+\makeatletter
+\renewcommand*{\fps@figure}{tb}
+\renewcommand*{\fps@table}{tb}
+\makeatother
+
+\renewenvironment{abstract}
+ {\small
+  \begin{center}
+  \bfseries \abstractname\vspace{-.5em}\vspace{0pt}
+  \end{center}
+  \list{}{%
+    \setlength{\leftmargin}{10mm}% <---------- CHANGE HERE
+    \setlength{\rightmargin}{\leftmargin}%
+  }%
+  \item\relax}
+ {\endlist}
+
+\usepackage{bookmark}
+
+%↑↑↑↑↑↑↑↑↑↑[Free to change, preamble. END]↑↑↑↑↑↑↑↑↑↑
+
+\begin{document}
+
+\pagenumbering{gobble}
+
+\begin{titlepage}
+\input{title}
+\end{titlepage}
+
+%↓↓↓↓↓↓↓↓↓↓[Free to change, settings/macro START]↓↓↓↓↓↓↓↓↓↓
+
+\setstretch{2.0}  % 본문 줄간격. 기본값은 1.3
+
+%\renewcommand*{\bibfont}{\normalfont\small}
+%\setlength{\bibsep}{10pt plus 1em}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0.5em}
+
+%%%%%%%%%%%%%%%%%%%%[    MACROS    ]%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\thefootnote}{\alph{footnote}}
+\renewcommand{\lg}{\ensuremath{\log_{10}}}
+\newcommand{\thru}{\ensuremath{\text{--}}}
+
+\renewcommand{\pV}{\ensuremath{p_\mathrm{V}}}
+\newcommand{\HV}{\ensuremath{H_\mathrm{V}}}
+\newcommand{\HVa}{\ensuremath{H_\mathrm{V}(\alpha)}}
+\newcommand{\Prot}{\ensuremath{P_\mathrm{rot}}}
+%\newcommand{\earth}{\ensuremath{_\oplus}}
+%\newcommand{\sun}{\ensuremath{_\odot}}
+
+\newcommand{\solarconst}{\ensuremath{\SI{1361.2}{W/m^2}}}
+\newcommand{\SB}{\ensuremath{\sigma_\mathrm{SB}}}
+\newcommand{\kB}{\ensuremath{k_\mathrm{B}}}
+\newcommand{\rhel}{\ensuremath{r_\mathrm{hel}}}
+\newcommand{\robs}{\ensuremath{r_\mathrm{obs}}}
+\newcommand{\sr}{\ensuremath{\,\mathrm{sr}}}
+\newcommand{\fwhm}{\ensuremath{\textsc{FWHM}}}
+\newcommand{\hwhm}{\ensuremath{\textsc{HWHM}}}
+
+\newcommand{\degr}{\ensuremath{^\circ}}
+\renewcommand{\um}{\ensuremath{\,\mathrm{\mu m}}}
+\renewcommand{\nm}{\ensuremath{\,\mathrm{nm}}}
+\renewcommand{\Angstrom}{\ensuremath{\,\text{\r{A}}}}
+\renewcommand{\mm}{\ensuremath{\,\mathrm{mm}}}
+\renewcommand{\cm}{\ensuremath{\,\mathrm{cm}}}
+\renewcommand{\km}{\ensuremath{\,\mathrm{km}}}
+\newcommand{\au}{\ensuremath{\,\mathrm{au}}}
+\newcommand{\mden}{\ensuremath{\,\mathrm{kg\,m^{-3}}}}
+\newcommand{\hr}{\ensuremath{\,\mathrm{hr}}}
+\newcommand{\yr}{\ensuremath{\,\mathrm{yr}}}
+
+\newcommand{\sep}{\quad;\quad}
+\newcommand{\separr}{\quad \rightarrow \quad}
+\newcommand{\simdot}{\mathrel{\dot{\sim}}}
+
+\newcommand{\lineseg}[1]{\ensuremath{\overline{\mathrm{#1}}}}
+\newcommand{\triang}[1]{\ensuremath{\triangle \mathrm{#1}}}
+\newcommand{\rect}[1]{\ensuremath{\Box \mathrm{#1}}}
+\newcommand{\linevec}[1]{\ensuremath{\overrightarrow{\mathrm{#1}}}}
+
+
+\newcommand{\chapquote}[2]{\qquad\textit{#1} \begin{flushright} --- #2\end{flushright} }
+
+%https://tex.stackexchange.com/questions/19605/setting-arbitrary-chapter-values
+\newcommand{\strangechapter}[1]{\renewcommand{\thechapter}{#1}\chapter*}
+
+\newcommand{\kr}[1]{{\scriptsize #1}}  % Just... to reduce font size for Hangeul characters in Acknowledgement.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%% for python
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+\lstdefinelanguage{none}{
+  identifierstyle=
+}
+\lstdefinestyle{python}{  % https://en.wikibooks.org/wiki/LaTeX/Source_Code_Listings
+    backgroundcolor=\color{backcolour}, % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+    commentstyle=\color{codegreen},     % comment style
+    keywordstyle=\color{magenta},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\scriptsize, % the size of the fonts that are used for the code
+    breakatwhitespace=false,           % sets if automatic breaks should only happen at whitespace
+    breaklines=true,                   % sets automatic line breaking
+%    captionpos=b,                      % sets the caption-position to bottom
+    keepspaces=true,                   % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+%    numbers=left,                    % where to put the line-numbers; possible values are (none, left, right)
+%    numbersep=5pt,                   % how far the line-numbers are from the code
+%    numberstyle=\tiny\color{mygray}, % the style that is used for the line-numbers
+%    stepnumber=10,                    % the step between two line-numbers. If it's 1, each line will be numbered
+    showspaces=false,                % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+    showstringspaces=false,          % underline spaces within strings only
+    showtabs=false,
+    rulecolor=\color{black},         % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+    tabsize=2,                        % sets default tabsize to 2 spaces
+    showtabs=false,                  % show tabs within strings adding particular underscores
+    language=Python,                 % the language of the code
+%    stringstyle=\color{mymauve},     % string literal style
+%    title=\lstname,                   % show the filename of files included with \lstinputlisting; also try caption instead of title
+%    deletekeywords={...},            % if you want to delete keywords from the given language
+%    escapeinside={\%*}{*)},          % if you want to add LaTeX within your code
+%    extendedchars=true,              % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+%    firstnumber=1000,                % start line enumeration with line 1000
+%    frame=single,	                   % adds a frame around the code
+%    keywordstyle=\color{blue},       % keyword style
+%    morekeywords={*,...},            % if you want to add more keywords to the set
+    upquote=true
+}
+
+\lstset{style=python}
+%↑↑↑↑↑↑↑↑↑↑[Free to change, settings/macros. END]↑↑↑↑↑↑↑↑↑↑
+
+\cleardoublepage % 새로운 페이지에서 시작
+\phantomsection % hyperref 패키지가 올바른 페이지 링크를 생성하도록 함
+\addcontentsline{toc}{chapter}{국문 초록} % 여기부터 국문 초록 작성
+%\pagenumbering{roman}
+%\setcounter{page}{4}
+\begin{abstract}
+
+\quad 최근 LLM(대규모 언어 모델, Large Language Model)의 발전으로 교육용 챗봇 개발 가능성이 증대되었으나, 기존의 교육용 챗봇은 학교 맥락 반영이 부족하고 상시 사용이 어려운 한계가 있었다. 이에 본 연구에서는 ...
+
+\quad ...
+
+\quad ...
+
+~\\
+\hangindent=2em
+\hangafter=2
+
+\textbf{주\,요\,어}: 주요어1, 주요어2, 주요어3, 주요어4, 주요어5, 주요어6
+
+\noindent \textbf{학 \quad 번}: 2020-30000
+~\\
+\end{abstract}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% For page numbering of Abstract & TOC
+\newcounter{mypageno}
+\let\oldtableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{%
+ \oldtableofcontents
+ \cleardoublepage
+ \setcounter{mypageno}{\value{page}}%
+ \pagenumbering{roman}%
+ \setcounter{page}{\value{mypageno}}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+{
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{\contentsname} % 전체 목차를 PDF 뷰어의 목차 패널에 표시되는 링크로 추가
+\pagenumbering{roman}
+\setcounter{tocdepth}{2} % 차례에 출력할 목차의 깊이 (2는 subsection까지, 3은 subsubection까지)
+\setstretch{1.5} % 목차의 줄간격
+\renewcommand{\contentsname}{차 례}
+\tableofcontents
+
+\cleardoublepage
+\phantomsection
+\addtocontents{lof}{\protect\addcontentsline{toc}{chapter}{그림 차례}}
+\listoffigures
+
+\cleardoublepage
+\phantomsection
+\addtocontents{lot}{\protect\addcontentsline{toc}{chapter}{표 차례}}
+\listoftables
+}
+\begin{comment} % 여기부터 안 필요해서 주석처리
+~ \\ ~ \\ ~ \\ % 앞부분에 넣는 감사의 글 쓰는 부분인 듯
+\begin{center}
+\textbf{\textit{
+Dedication goes here
+}}
+\end{center}
+
+\mbox{}
+\vfill
+{Other dedication if you want}
+
+{\footnotesize
+Free to add more here?
+}
+
+\hfill ---\textit{Louis Pasteur}
+\end{comment}
+\clearpage
+
+\pagenumbering{arabic}
+
+%\part{서론}\label{part-bkg} part 대신 chapter를 가장 높은 수준으로 사용함
+% 차례는 연구에 맞게 수정하여 사용하세요
+
+\chapter{서론}
+\input{chaps/intro}
+
+\chapter{이론적 배경}\label{backgrounds-priorresearch}
+\input{chaps/theoretical_background}
+
+\chapter{연구 방법}\label{methods}
+\input{chaps/methods}
+
+\chapter{연구 결과}\label{results}
+\input{chaps/results}
+
+\chapter{결론 및 논의}
+\input{chaps/conclusion}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% Bibliography %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\clearpage
+\printbibliography[title={참고문헌}]
+%\addcontentsline{toc}{chapter}{참고문헌}
+%\bibliographystyle{aa_url}
+%\setstretch{1.0}  % ← of course you can change this as you wish, too.
+%\bibliography{references.bib}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\appendix % 부록은 연구에 맞추어 수정하세요
+\chapter{연구에서 사용했던 약어 목록}
+\input{chaps/appendix-a.tex}
+
+\chapter{IRB 결과 통보서와 연구 참여자 모집 문건, 설문지}
+\input{chaps/appendix-b.tex}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%% 영문초록 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setstretch{2.0} % 영문초록의 줄간격
+\chapter*{Abstract}\addcontentsline{toc}{chapter}{Abstract}%\setcounter{page}{3}
+
+\begin{center}
+  \begin{huge}
+    INPUT YOUR TITLE IN ENGLISH
+  \end{huge}
+\end{center}
+
+\begin{flushright}
+  \begin{large}
+    Gildong Hong
+
+    Physics Education
+    
+    The Graduate School
+    
+    Seoul National University    
+  \end{large}
+\end{flushright}
+
+\quad Recent advances in Large Language Models (LLMs) have enhanced the potential for developing educational chatbots. 
+
+\quad ...
+
+\quad ...
+
+~\\
+\hangindent=2em
+\hangafter=2
+\textbf{Keywords}: Keyword1, Keyword2, Keyword3, Keyword4, Keyword5, Keyword6
+
+~\\
+\noindent \textbf{Student Number}: 2020-30000
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%\chapter*{Acknowledgement}\\
+%\twocolumn
+
+% 감사의 말은 꼭 필요하지는 않아서 생략 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\strangechapter{Ack}{Acknowledgement}\addcontentsline{toc}{chapter}{Acknowledgement}
+%\small
+%\footnotesize
+%\setstretch{1.1}
+%\setlength{\parskip}{0.3em}
+%\input{chaps/acknowledgement}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\end{document}

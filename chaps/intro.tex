@@ -1,0 +1,107 @@
+\section{연구의 배경 및 필요성}\label{c:intro}
+
+최근 자연어 처리(Natural Language Processing, NLP) 기술은 트랜스포머 기반의 거대 언어 모델(Large Language Model, LLM)로 발전하며 교육 분야에서의 활용 가능성을 크게 넓혔다. 학생들의 질문은 과학 학습의 핵심 과정으로 교사의 적절한 응답은 학습 효과를 크게 높인다\citep{chin2008,eshach2014}.
+
+...
+
+\section{연구의 목적과 문제}
+
+본 연구의 목적은 ...이다. 연구 문제는 다음과 같다.
+
+\begin{enumerate}
+    \item 연구문제 1
+    \item 연구문제 2
+    \item 연구문제 3
+    \begin{enumerate}
+        \item 세부 연구문제 1
+        \item 세부 연구문제 2
+    \end{enumerate}
+\end{enumerate}
+
+\section{연구과정의 개요}
+
+본 연구는 LLM을 이용하여 학생이 학교 현장에서 실제로 사용할 수 있는 과학 질문-답변 챗봇을 개발하고 평가한 연구로서 \cite{min2022, min2024}의 후속 연구이기도 하다.
+
+...
+
+연구 과정의 개요는 다음과 같이 도식화하였다.
+
+\bigskip
+
+\begin{tikzpicture}[
+    node distance=4.5cm and 5.5cm, % 노드 간격
+    every node/.style={
+        rectangle, 
+        draw=black, 
+        thick, 
+        rounded corners,
+        minimum width=4cm,
+        minimum height=1cm,
+        align=center
+    },
+    main/.style={fill=blue!10},
+    sub/.style={fill=white},
+    arrow/.style={-{Latex}, thick}
+]
+
+% 메인 노드들
+\node[main] (background) {선행연구 분석};
+\node[main, below=of background] (design) {챗봇 설계};
+\node[main, below=of design] (operation) {챗봇 운영};
+\node[main, below=of operation] (evaluation) {챗봇 평가};
+
+% 화살표 연결
+\draw[arrow] (background) -- (design);
+\draw[arrow] (design) -- (operation);
+\draw[arrow] (operation) -- (evaluation);
+
+% 각 노드의 세부 내용
+\node[sub, right=of background, xshift=-4.0cm] (background-details) {
+    \begin{minipage}{9.5cm}
+    • 문헌 분석\\
+    • 선행연구 1\citep{min2022}\\
+    • 선행연구 2\citep{min2024}\\
+    • 선행연구 분석을 통한 학교 맞춤형 과학 질문-답변 챗봇의 설계 지침 도출
+    \end{minipage}
+};
+
+\node[sub, right=of design, xshift=-4.0cm] (design-details) {
+    \begin{minipage}{9.5cm}
+    • 프로토타입 개발\\
+    • RAG 적용을 위한 외부 데이터 구성\\
+    • IRB 승인
+    \end{minipage}
+};
+
+\node[sub, right=of operation, xshift=-4.0cm] (operation-details) {
+    \begin{minipage}{9.5cm}
+    • 학교 맞춤형 과학 질문-답변 챗봇 서비스 시작\\
+    • 학생의 무기명 자유 접속 허용\\
+    • 연구자의 상시적인 챗봇 답변 모니터링 및 지속적인 시스템 개선
+    \end{minipage}
+};
+
+\node[sub, right=of evaluation, xshift=-4.0cm] (evaluation-details) {
+    \begin{minipage}{9.5cm}
+    • 정성 평가: 교사의 답변 정확성과 설명 수준의 적절성 평가, 학생의 사용성 평가\\
+    • 정량 평가: 학생의 실제 질문을 이용한 외부 데이터의 역할 분석
+    \end{minipage}
+};
+
+% 세부 내용과 메인 노드 연결 (점선)
+\draw[dotted] (background) -- (background-details);
+\draw[dotted] (design) -- (design-details);
+\draw[dotted] (operation) -- (operation-details);
+\draw[dotted] (evaluation) -- (evaluation-details);
+
+\end{tikzpicture}
+
+\section{용어의 정의}
+
+\subsection{용어 1}
+
+...
+
+\subsection{용어 2}
+
+...

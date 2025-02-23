@@ -1,0 +1,161 @@
+% Thesis title
+\def\tTitleK{{우리말 제목 \\ 한 줄 떼려면 중간에 백슬래시 두 번 넣으세요}}
+\def\tTitleA{{INPUT YOUR TITLE IN ENGLISH}}
+%\def\tTitleB{{at Seoul National University}}
+
+% Department name
+\def\tDepartment{{Department of Education}}  % Department name
+\def\tDepartmentKr{{과학교육과 물리전공}}   % Department name 중간 점은 \cdot
+\def\tCollegeOrGradSchool{{College of Education}}  % Exists only in English format.. I dunno why.
+\def\tMajor{{Science Education}}  % Normally it is in separate line in English version. If you have major, add this. Otherwise, modify below (cosmetically modify as you wish)
+
+% Submission date.
+% I have no idea about official regulation, but mostly people do 6월 or 12월.
+\def\tDate{{December 2024}}
+\def\tDateKr{{2024년 12월}}
+
+% Only February or August
+\def\tInjunDate{{February 2025}}
+\def\tInjunDateKr{{2025년 2월}}  % xxxx년 2월 OR 8월
+
+% Name of the degree
+\def\tDeg{{Ph.D.}}
+\def\tDegKr{{교육학박사}}  % 이학석사, 이학박사, 공학석사, 공학박사, ...
+\def\tDegLong{{Doctor of Philosophy}}
+
+% My name
+\def\tName{{Gildong Hong}}
+\def\tNameWithBlank{{Gildong\ Hong}}
+\def\tNameKr{{홍\ 길\ 동}}  % If you want, you can put English name here too (I did it with my PhD thesis)
+\def\tNameKrWithBlank{{홍\ 길\ 동}}  % If you want, you can put English name here too (I did it with my PhD thesis)
+
+% Supervisor name
+\def\tNameSuper{{Younghee\ Kim}}
+\def\tNameSuperKr{{김\ 영\ 희}}   % If you want, you can put English name here too (I did it with my PhD thesis)
+
+
+\newcommand{\wideunderline}[2][2em]{%
+  \underline{\makebox[\ifdim\width>#1\width\else#1\fi]{#2}}%
+}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Korean Version
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\renewcommand{\baselinestretch}{1}
+\centering
+{\Large \quad \par}
+\vspace{.5cm}{\Large \bf \tDegKr\ 학위논문 \par}
+\vspace{2cm}
+{\LARGE \bf \tTitleK \par}
+\vspace{.3cm}
+%% {\Huge \bf \tTitleB \par}
+%% \vspace{2cm}
+{\LARGE \bf INPUT YOUR TITLE IN ENGLISH \par}
+\vspace{4.5cm}
+{\Large \bf \tInjunDateKr \par}
+\vspace{3cm}
+{\LARGE \bf 서울대학교 대학원 \par}  % I think it should be "서울대학교 대학원" all the time.
+\vspace{.5cm}
+{\Large \bf \tDepartmentKr \par}
+\vspace{.5cm}
+{\LARGE \bf \tNameKr \par}
+
+
+
+\clearpage
+
+\centering
+{\Large \quad \par}
+\vspace{.1cm}
+{\LARGE \bf \tTitleK \par} % 한글 제목 넣기
+\vspace{.3cm}
+%% {\Huge \bf \tTitleB \par}
+%% \vspace{0.5cm}
+{\Large \bf \tTitleA \par} % \Huge나 LARGE로 설정하면 한 줄 더 늘어서 두 페이지가 되어버림
+\vspace{1.cm}
+{\Large \bf 지도교수 $\ $ \tNameSuperKr  \par}
+\vspace{0.5cm}
+{\LARGE \bf 이 논문을 \tDegKr\ 학위논문으로 제출함 \par}
+\vspace{.2cm}
+{\Large \bf \tDateKr \par}
+
+\vspace{.9cm}
+{\LARGE \bf 서울대학교 대학원 \par}
+\vspace{.3cm}
+{\Large \bf \tDepartmentKr \par}
+\vspace{.3cm}
+{\LARGE \bf \tNameKrWithBlank \par}
+\vspace{.9cm}
+
+{\LARGE \bf \tNameKr 의 \tDegKr\ 학위논문을 인준함 \par}
+\vspace{.2cm}
+{\Large \bf \tInjunDateKr \par}
+\vspace{1.2cm}
+{\Large \bf 위\hspace{0.54cm}원\hspace{0.54cm}장} \quad {\Large \wideunderline[12em]{\hfill 김\ 영\ 희\hfill(인)}} \par
+\vspace{.7cm}
+{\Large \bf 부\ 위\ 원\ 장} \quad {\Large \wideunderline[12em]{\hfill 김\ 영\ 희\hfill(인)} } \par
+\vspace{.7cm}
+{\Large \bf 위\hspace{1.7cm}원} \quad {\Large \wideunderline[12em]{\hfill 김\ 영\ 희\hfill(인)} } \par
+\vspace{.7cm}
+{\Large \bf 위\hspace{1.7cm}원} \quad {\Large \wideunderline[12em]{\hfill 김\ 영\ 희\hfill(인)} } \par
+\vspace{.7cm}
+{\Large \bf 위\hspace{1.7cm}원} \quad {\Large \wideunderline[12em]{\hfill 김\ 영\ 희\hfill(인)} } \par
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% An Information page in English
+%% I made it by myself following few predecessors. I don't know if this is an official format.
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% 영어 표지는 안 쓸 거라서 \begin{comment}부터 \end{comment} 처리 20240521 %
+\begin{comment}
+\clearpage
+\centering
+
+{\Large \quad \par}
+\vspace{.1cm}
+{\Huge \bf \tTitleA \par}
+\vspace{.3cm}
+{\Huge \bf \tTitleB \par}
+\vspace{.5cm}
+{\large By \par}
+\vspace{0.5cm}
+{\Large \bf \tNameWithBlank \par }
+\vspace{0.5cm}
+{\large A dissertation submitted in partial fulfillment of the requirements \\ for the degree of \par}
+\vspace{.5cm}
+{\Large \bf \tDegLong \par}
+\vspace{.3cm}
+{\large in\par}
+\vspace{.3cm}
+{\Large \tMajor \par}
+\vspace{.9cm}
+
+{\large \tCollegeOrGradSchool \par}
+\vspace{.2cm}
+{\large \tDepartment \par}
+\vspace{.2cm}
+{\large Seoul National University\par}
+\vspace{.2cm}
+{\large \tMajor\ Major \par}
+
+
+\vspace{1cm}
+{\large Supervised by $\ $ \tNameSuper \par}
+\vspace{1cm}
+
+{\large \tInjunDate \par}
+\vspace{1.2cm}
+{\large Committee: \qquad\qquad\qquad\qquad\qquad\qquad\qquad\qquad \par}
+
+\begin{table} [h!]
+\large
+\centering
+\begin{tabular}{lll}\vspace{.2cm}
+Chair      & Professor & Professor N. One \\ \vspace{.2cm}
+Vice Chair & Professor & Likely Ur. Supervisor \\ \vspace{.2cm}
+Examiner   & Professor & Another Professor\\ \vspace{.2cm}
+Examiner   & Doctor & Another Doctor\\ \vspace{.2cm}
+Examiner   & Doctor & Yet Another\\
+\end{tabular}
+\end{table}
+\end{comment}
+\clearpage

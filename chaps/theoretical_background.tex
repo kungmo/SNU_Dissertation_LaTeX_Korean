@@ -1,0 +1,42 @@
+\section{오픈소스 한국어 지원 LLM}
+
+각주 작성 예시
+
+거대 언어 모델\footnote{거대 언어 모델은 Large Language Model을 번역한 용어로 매우 많은 매개변수를 사용하여 깊은 신경망(Deep Neural Network)을 구성하여 아주 큰 데이터를 사전학습 시킨 모델이다\citep{chang2024}.}
+
+...
+
+\section{RAG (Retrieval Augmented Generation)}
+
+\subsection{환각 현상 감소를 위한 RAG 적용}
+
+참고문헌 삽입 예시
+
+cite와 citep를 적절하게 사용하세요. cite는 괄호를 붙이지 않고, citep는 괄호를 붙입니다.
+
+RAG는 LLM 자체는 그대로 두되 LLM이 벡터 저장소에 있는 자료를 참고로 하여 응답을 생성하도록 유도하는 기술이다\citep{amazon2024-rag}. RAG는 LLM의 파인튜닝보다 훨씬 비용적으로 경제적이다. 이 방법은 파인튜닝을 하는 방법보다 환각 현상 감소에 효과적이고 답변 출력의 일관성을 높이는 데에 더 적합하며\citep{sonjiwon2024}, LLM 자체를 손보지 않으므로 컴퓨팅 자원을 훨씬 적게 요구하는 장점이 있다\citep{amazon2024-rag}.
+
+...
+
+\subsection{여기에 subsetion 제목을 쓰세요}
+
+내용을 쓰세요.
+
+\subsubsection{수식 작성 예시}
+
+$$\text{Cosine 유사도} = \cos(\theta) = \frac{A \cdot B}{||A|| ||B||} = \frac{\sum_{i=1}^{n} A_i B_i}{\sqrt{\sum_{i=1}^{n} A_i^2} \sqrt{\sum_{i=1}^{n} B_i^2}}$$
+
+\subsubsection{순서 있는 목록 작성 예시}
+
+\begin{enumerate}
+    \item 맞춤형 학습: 개인화된 학습 자료 제공
+    \item 체험 학습: 개인 경험 성찰
+    \item 잡담(Small-talk): 챗봇에 잡담 기능을 통합하면 사용자를 참여시키고 신뢰를 얻을 수 있는 장점이 있음.
+\end{enumerate}
+
+\subsubsection{순서 없는 목록 작성 예시}
+
+\begin{itemize}
+    \item 교사용 교과서 및 지도서 PDF 파일 내용 데이터셋 28,823개
+    \item 학교 규정 395개
+\end{itemize}
