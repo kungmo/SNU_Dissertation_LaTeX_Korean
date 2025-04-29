@@ -35,6 +35,8 @@ manuscript.tex로부터 title.tex와 /chaps 안에 있는 tex 파일이 붙는 �
 
 목차의 수준은 manuscript.tex의 \setcounter{tocdepth}{2} % 차례에 출력할 목차의 깊이 (2는 subsection까지, 3은 subsubection까지) 부분을 참고하여 정할 수 있습니다.
 
+Perl이 설치되어 있지 않다고 나오면 터미널을 실행한 후, winget install -e --id StrawberryPerl.StrawberryPerl 을 실행하여 Strawberry Perl을 설치하세요.
+
 # 한계
 
 2024년 겨울 기준으로 MacOS에서는 MikTeX에서 일부 라이브러리가 작동하지 않아 사용할 수 없었습니다. 윈도우에서는 잘 작동했습니다.
