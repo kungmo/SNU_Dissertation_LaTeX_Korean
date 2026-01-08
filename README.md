@@ -10,9 +10,19 @@ references.bib에서 한국어 참고문헌에만 keywords={kobib} 을 추가하
 
 제가 작성한 학위논문 내용의 일부를 예시로 넣었으니 작성자의 의도에 맞게 고쳐 쓰시길 바랍니다. LaTeX를 이용하여 한국어로 학위 논문 작성 시 이 파일을 얼마든지 변형해서 사용하실 수 있습니다.
 
+# GitHub에서 학위논문 LaTeX 템플릿 다운로드
+
+1. 편집할 파일을 내려 받을 디렉토리로 이동합니다.
+2. git clone https://github.com/kungmo/SNU_Dissertation_LaTeX_Korean.git 을 실행하여 템플릿을 통째로 내려 받습니다.
+3. SNU_Dissertation_LaTeX_Korean 이라는 디렉토리에 파일이 모두 다운로드될 것입니다.
+
 # 글꼴 설치
-Fonts_to_install.7z.001과 Fonts_to_install.7z.002를 같은 디렉토리에 넣고 7-zip으로 압축을 풀어 컴파일에 필요한 글꼴 함초롬체 LVT와 Tex Gyre를 설치합니다. 모든 글꼴을 컴파일 전에 설치해야 합니다.
-2025년 2월 기준으로 한국텍학회 https://www.ktug.org 웹 사이트가 작동하지 않아 링크를 걸지 못 하고 GitHub에 글꼴을 업로드했습니다.
+
+1. SNU_Dissertation_LaTeX_Korean 디렉토리 안에 Fonts라는 이름으로 디렉토리를 만듭니다.
+2. Fonts_to_install.7z.001과 Fonts_to_install.7z.002를 방금 만든 Fonts 디렉토리에 넣습니다.
+- 2026년 1월 업데이트: 윈도우와 리눅스에서 모두 작동하도록 글꼴을 Fonts 디렉토리를 만들어서 모두 집어 넣고, manuscript.tex에 글꼴의 파일명을 명시했습니다.
+3. 7-zip으로 컴파일에 필요한 글꼴인 함초롬체 LVT와 Tex Gyre를 Fonts에 풀어줍니다. 2025년 2월 기준으로 한국텍학회 https://www.ktug.org 웹 사이트가 작동하지 않아 링크를 걸지 못 하고 GitHub에 글꼴을 업로드했습니다.
+2026년 1월에도 한국텍학회 웹사이트가 복구되지 않아 부득이하게 글꼴 파일을 유지합니다.
 
 # 사용법
 
@@ -20,10 +30,15 @@ Fonts_to_install.7z.001과 Fonts_to_install.7z.002를 같은 디렉토리에 넣
 2. MikTeX Console을 실행한 후, Check for updates를 눌러서 모든 패키지를 업데이트합니다.
 3. Visual Studio Code를 설치합니다.
 4. 확장 기능으로 Korean Language Pack과 LaTeX Workshop을 설치합니다.
-5. settings.json.7z 압축 파일을 풀어서 settings.json 파일을 C:\Users\계정이름\AppData\Roaming\Code\User 에 붙여 넣습니다.
+5. settings.json.7z 압축 파일을 풀어서 settings.json 파일을 열고
+- editor.fontFamily에서 VSCode에서 쓸 글꼴의 종류를 설정합니다.
+- editor.fontSize에서 VSCode에서 쓸 글꼴의 크기를 설정합니다.
+6. settings.json 파일을
+- 윈도우: C:\Users\계정이름\AppData\Roaming\Code\User 에 붙여 넣습니다.
+- 리눅스: /home/계정이름/.config/Code/User 에 settings.json 파일이 있습니다.
 6. Visual Studio Code를 실행하여 사이드바의 LaTeX를 누른 후, LaTeX 프로젝트에서 레시피:xelaex -> biber -> xelatex 가 나오는지 확인합니다.
 7. 논문을 작성한 후, LaTeX 프로젝트에서 레시피:xelaex -> biber -> xelatex 로 컴파일합니다.
-8. 잘 되면 중간중간 MikTeX Console에서 없는 패키지를 실시간으로 내려받아 설치할 것입니다. 긍정적인 답변을 클릭합니다.
+8. 잘 되면 중간중간 MikTeX Console에서 없는 패키지를 실시간으로 내려받아 설치할 것입니다. 뭔가 설치하겠다는 메시지가 나오면 긍정적인 답변을 클릭합니다.
 
 # 작성 팁
 
@@ -34,7 +49,7 @@ Fonts_to_install.7z.001과 Fonts_to_install.7z.002를 같은 디렉토리에 넣
 
 # 컴파일 시 오류 대처법
 
-1. Perl이 설치되어 있지 않다고 나오면 터미널을 실행한 후, winget install -e --id StrawberryPerl.StrawberryPerl 을 실행하여 Strawberry Perl을 설치하세요.
+1. 윈도우: Perl이 설치되어 있지 않다고 나오면 터미널을 실행한 후, winget install -e --id StrawberryPerl.StrawberryPerl 을 실행하여 Strawberry Perl을 설치하세요.
 2. 글꼴을 설치했는데도 Tex Gyre Termes 등의 글꼴이 설치되어 있지 않다고 하면 VSCode를 종료한 다음 MikTex Console을 별도로 실행시킨 다음 Packages에서 'gyre'로 검색하여 나오는 'tex-gyre'와 'tex-gyre-math'를 설치하면 글꼴 인식 문제를 해결할 수 있습니다.
 
 # 한계

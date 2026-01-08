@@ -143,19 +143,34 @@
 \ifboolexpr{bool{xetex} or bool{luatex}}
 {
   \usepackage{fontspec}
-  \setmainfont{TeX Gyre Termes}
-  \setsansfont{TeX Gyre Heros}
-  \setmainhangulfont{HANBatang-LVT}[
-    Extension = .ttf,
-    UprightFont = *,
-    BoldFont = {HANBatangB-LVT}]
-  \setsanshangulfont{HANDotum-LVT}[
-    Extension = .ttf,
-    UprightFont = *,
-    BoldFont = {HANDotumB-LVT}]
+  \setmainfont{texgyretermes-regular.otf}[
+    Path = Fonts/,
+    BoldFont = texgyretermes-bold.otf,
+    ItalicFont = texgyretermes-italic.otf,
+    BoldItalicFont = texgyretermes-bolditalic.otf
+  ]
+  \setsansfont{texgyreheros-regular.otf}[
+    Path = Fonts/,
+    BoldFont = texgyreheros-bold.otf,
+    ItalicFont = texgyreheros-italic.otf,
+    BoldItalicFont = texgyreheros-bolditalic.otf
+  ]
+  \setmainhangulfont{HANBatang-LVT.ttf}[
+      Path = Fonts/,
+      BoldFont = HANBatangB-LVT.ttf,
+      AutoFakeSlant = 0.15
+  ]
+  \setsanshangulfont{HANDotum-LVT.ttf}[
+      Path = Fonts/,
+      BoldFont = HANDotumB-LVT.ttf
+  ]
   \usepackage{unicode-math}
   \setmathfont{TeX Gyre Termes Math}
-  \setmathhangulfont{HANBatang-LVT.ttf}
+  \setmathhangulfont{HANBatang-LVT.ttf}[
+      Path = Fonts/,
+      BoldFont = HANBatangB-LVT.ttf,
+      AutoFakeSlant = 0.15
+  ]
 }%
 {
   \ifpdftex
