@@ -27,13 +27,14 @@ references.bib에서 한국어 참고문헌에만 keywords={kobib} 을 추가하
 # 사용법
 
 1. MikTeX를 설치합니다.
+- Linux: https://miktex.org/download 를 참고하여 설치합니다.
 2. MikTeX Console을 실행한 후, Check for updates를 눌러서 모든 패키지를 업데이트합니다.
 3. Visual Studio Code를 설치합니다.
 4. 확장 기능으로 Korean Language Pack과 LaTeX Workshop을 설치합니다.
 5. settings.json.7z 압축 파일을 풀어서 settings.json 파일을 열고
 - editor.fontFamily에서 VSCode에서 쓸 글꼴의 종류를 설정합니다.
 - editor.fontSize에서 VSCode에서 쓸 글꼴의 크기를 설정합니다.
-6. settings.json 파일을
+6. 손본 settings.json 파일을
 - 윈도우: C:\Users\계정이름\AppData\Roaming\Code\User 에 붙여 넣습니다.
 - 리눅스: /home/계정이름/.config/Code/User 에 settings.json 파일이 있습니다.
 6. Visual Studio Code를 실행하여 사이드바의 LaTeX를 누른 후, LaTeX 프로젝트에서 레시피:xelaex -> biber -> xelatex 가 나오는지 확인합니다.
