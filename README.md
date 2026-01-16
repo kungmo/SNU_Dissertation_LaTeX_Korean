@@ -18,15 +18,14 @@ references.bib에서 한국어 참고문헌에만 keywords={kobib} 을 추가하
 
 # 글꼴 설치
 
-1. SNU_Dissertation_LaTeX_Korean 디렉토리 안에 Fonts라는 이름으로 디렉토리를 만듭니다.
-2. Fonts_to_install.7z.001과 Fonts_to_install.7z.002를 방금 만든 Fonts 디렉토리에 넣습니다.
+1. 7-zip으로 컴파일에 필요한 글꼴을 모아둔 Fonts_to_install.7z.001과 Fonts_to_install.7z.002 파일의 압축을 풉니다. Fonts_to_install.7z.001 파일의 압축을 풀면 자동으로 .002 파일의 압축도 풀립니다.
+2. Fonts 디렉토리에 글꼴들이 잘 들어갔는지 확인합니다.
 - 2026년 1월 업데이트: 윈도우와 리눅스, 맥OS에서 모두 작동하도록 글꼴을 Fonts 디렉토리를 만들어서 모두 집어 넣고, manuscript.tex에 글꼴의 파일명을 명시했습니다. 운영체제마다 글꼴을 처리하는 방법이 매우 다르기 때문에 Font 디렉토리 안에 있는 글꼴 파일의 이름을 지정하는 방법을 적용했습니다.
-3. 7-zip으로 컴파일에 필요한 글꼴인 함초롬체 LVT와 Tex Gyre를 Fonts에 풀어줍니다. 2025년 2월 기준으로 한국텍학회 https://www.ktug.org 웹 사이트가 작동하지 않아 링크를 걸지 못 하고 GitHub에 글꼴을 업로드했습니다.
-2026년 1월에도 한국텍학회 웹사이트가 복구되지 않아 부득이하게 글꼴 파일을 유지합니다.
+[참고] 2025년 2월 기준으로 한국텍학회 https://www.ktug.org 웹 사이트가 작동하지 않아 링크를 걸지 못 하고 GitHub에 글꼴을 업로드했습니다. 2026년 1월에도 한국텍학회 웹사이트가 복구되지 않아 부득이하게 글꼴 파일을 유지합니다.
 
 # 사용법
 
-1. MikTeX(윈도우, 리눅스)나 MacTeX(맥OS) 설치합니다.
+1. 윈도우, 리눅스는 MikTeX를 설치합니다. 맥OS는 MacTeX를 설치합니다.
 - 윈도우, Linux: https://miktex.org/download 를 참고하여 설치합니다.
 - 맥OS: https://www.tug.org/mactex/mactex-download.html 를 참고하여 설치합니다.
 2. 설치한 MikTeX나 MacTeX를 업데이트합니다.
@@ -42,7 +41,7 @@ references.bib에서 한국어 참고문헌에만 keywords={kobib} 을 추가하
 - 리눅스: /home/계정이름/.config/Code/User 에 붙여 넣습니다.
 - 맥OS: /Users/계정이름/Library/Application Support/Code/User 에 붙여 넣습니다.
 6. Visual Studio Code를 실행하여 사이드바의 LaTeX를 누른 후, LaTeX 프로젝트에서 레시피:xelaex -> biber -> xelatex 가 나오는지 확인합니다.
-7. 논문을 작성한 후, LaTeX 프로젝트에서 레시피:xelaex -> biber -> xelatex 로 컴파일합니다.
+7. 논문을 작성한 후, LaTeX 프로젝트에서 레시피: xelaex -> biber -> xelatex 로 컴파일합니다.
 8. 윈도우, 리눅스: 잘 되면 중간중간 MikTeX Console에서 없는 패키지를 실시간으로 내려받아 설치할 것입니다. 뭔가 설치하겠다는 메시지가 나오면 긍정적인 답변을 클릭합니다.
 맥OS: 없는 패키지는 TeX Live Utility를 실행하여 검색하고 설치합니다.
 
