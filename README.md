@@ -37,12 +37,17 @@ references.bib에서 한국어 참고문헌에만 keywords={kobib} 을 추가하
 - editor.fontFamily에서 VSCode에서 쓸 글꼴의 종류를 설정합니다.
 - editor.fontSize에서 VSCode에서 쓸 글꼴의 크기를 설정합니다.
 6. Visual Studio Code의 settings.json 파일을 수정합니다.
+  
   방법 1
+  
     손본 settings.json 파일을
+  
     - 윈도우: C:\Users\계정이름\AppData\Roaming\Code\User 에 붙여 넣습니다.
     - 리눅스: /home/계정이름/.config/Code/User 에 붙여 넣습니다.
     - 맥OS: /Users/계정이름/Library/Application Support/Code/User 에 붙여 넣습니다.
+  
   방법 2
+  
     - 윈도우와 리눅스: Visual Studio Code 실행 후, Ctrl + Shift + P 를 눌러서 나오는 [기본설정: 사용자 설정 열기(JSON)] 을 선택하면 나오는 settings.json 에다가 5에서 손본 settings.json 내용을 그대로 붙여 넣습니다.
     - 맥OS: Visual Studio Code 실행 후, CMD + Shift + P 를 눌러서 나오는 [기본설정: 사용자 설정 열기(JSON)] 을 선택하면 나오는 settings.json 에다가 5에서 손본 settings.json 내용을 그대로 붙여 넣습니다.
 7. Visual Studio Code를 실행하여 사이드바의 LaTeX를 누른 후, LaTeX 프로젝트에서 레시피:xelaex -> biber -> xelatex 가 나오는지 확인합니다.
