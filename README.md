@@ -47,9 +47,11 @@ references.bib에서 한국어 참고문헌에만 keywords={kobib} 을 추가하
     - 맥OS: /Users/계정이름/Library/Application Support/Code/User 에 붙여 넣습니다.
   
   방법 2
-  
+  <img width="642" height="96" alt="settings json" src="https://github.com/user-attachments/assets/27299c58-1988-4d10-9884-00c49ac2492a" />
+
     - 윈도우와 리눅스: Visual Studio Code 실행 후, Ctrl + Shift + P 를 눌러서 나오는 [기본설정: 사용자 설정 열기(JSON)] 을 선택하면 나오는 settings.json 에다가 5에서 손본 settings.json 내용을 그대로 붙여 넣습니다.
     - 맥OS: Visual Studio Code 실행 후, CMD + Shift + P 를 눌러서 나오는 [기본설정: 사용자 설정 열기(JSON)] 을 선택하면 나오는 settings.json 에다가 5에서 손본 settings.json 내용을 그대로 붙여 넣습니다.
+      
 7. Visual Studio Code를 실행하여 사이드바의 LaTeX를 누른 후, LaTeX 프로젝트에서 레시피:xelaex -> biber -> xelatex 가 나오는지 확인합니다.
 8. 논문을 작성한 후, LaTeX 프로젝트에서 레시피: xelaex -> biber -> xelatex 로 컴파일합니다.
 9. 윈도우, 리눅스: 잘 되면 중간중간 MikTeX Console에서 없는 패키지를 실시간으로 내려받아 설치할 것입니다. 뭔가 설치하겠다는 메시지가 나오면 긍정적인 답변을 클릭합니다.
